@@ -1,0 +1,12 @@
+.page-container {
+    padding: 25px;
+    background: #e0dfdf;
+}
+
+/*for mobile*/
+@media (max-width: 746px) {
+    .page-container {
+        padding: 0;
+        width: 100vh;
+    }
+}

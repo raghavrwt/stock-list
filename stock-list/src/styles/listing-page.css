@@ -1,0 +1,99 @@
+.coin-container {
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 9px 10px rgba(0, 0, 0, .08);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.stock-list {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+
+td, th {
+    width: 10%;
+    padding: 20px;
+    text-align: left;
+}
+
+tr:hover {
+    background-color: #edf9fd;
+}
+
+td {
+    border-bottom: 2px solid #ece6e6;
+}
+
+th {
+    border-bottom: 2px solid #ece6e6;
+    border-top: 2px solid #ece6e6;
+    background-color: #f1f2f5;
+    cursor: pointer;
+}
+.coin-name a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-decoration: none;
+}
+
+a:link, a:visited {
+    color: blue;
+}
+.input-field i {
+    position: absolute;
+    z-index: 1;
+    height: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 11.25px;
+    pointer-events: none;
+    color: grey;
+}
+
+tr:nth-child(even) {
+    background-color: #f1f2f5;
+}
+  
+.input-field {
+    position: relative;
+    z-index: 1;
+    width: 50%;
+}
+  
+.input {
+    width: 40%;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    outline: none;
+    border: 1px solid grey;
+    padding-left: 35px;
+    text-align: left;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+.yellow {
+    color: red;
+    outline: red;
+}
+.head {
+    display: flex;
+    align-items: center;
+}
+
+/*for mobile*/
+@media (max-width: 746px) {
+    .coin-container {
+        margin: 0;
+    }
+}
