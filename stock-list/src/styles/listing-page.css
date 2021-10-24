@@ -89,11 +89,30 @@ tr:nth-child(even) {
 .head {
     display: flex;
     align-items: center;
+    background-color: #f1f2f5;
 }
 
 /*for mobile*/
 @media (max-width: 746px) {
     .coin-container {
         margin: 0;
+    }
+    tr:nth-child(even) .sticky-col {
+        background-color: #f1f2f5;
+        position: -webkit-sticky;
+        position: sticky;
+        width: 100px;
+        min-width: 100px;
+        max-width: 100px;
+        left: 0px;
+    }
+    tr:nth-child(odd) .sticky-col {
+        background-color: #fff;
+        position: -webkit-sticky;
+        position: sticky;
+        width: 100px;
+        min-width: 100px;
+        max-width: 100px;
+        left: 0px;
     }
 }

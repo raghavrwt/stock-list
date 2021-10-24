@@ -164,68 +164,70 @@ const ListingPage = (props) => {
                     <i className="fa fa-search icon"></i>
                     <input className="input" type="text" onChange={onHandleChange} placeholder="Search Coins"></input>
                 </div>
-                <table className="stock-list">
-                <thead>
-                    <tr>
-                        <th>Coins</th>
-                        <th onClick={() => sortBy("last_traded_price")}>
-                            <div className="head">
-                                <i className={direction["last_traded_price"] ? (direction["last_traded_price"] === 'desc' ? 'fa fa-sort-desc' : 'fa fa-sort-asc') : ''  }></i>
-                                Price
-                            </div>
-                        </th>
-                        <th onClick={() => sortBy("volume")}>
-                            <div className="head">
-                                <i className={direction["volume"] ? (direction["volume"] === 'desc' ? 'fa fa-sort-desc' : 'fa fa-sort-asc') : ''  }></i>
-                                Volume
-                            </div>
-                        </th>
-                        <th onClick={() => sortBy("percentage")}>
-                        <div className="head">
-                                <i className={direction["percentage"] ? (direction["percentage"] === 'desc' ? 'fa fa-sort-desc' : 'fa fa-sort-asc') : ''  }></i>
-                                24H %
-                            </div>
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    { tableData.length > 0 && tableData.map((item) => {
-                        const { coinId, coinName, volume, last_traded_price, percentage, fav, coinIcon, code, coinType} = item
-                        return (
-                            <tr key={coinId}>
-                                <td>
-                                    <div className="coin-name">
-                                        <Link to={{ 
-                                        pathname: `/${code}`, 
-                                        detailData: { 
-                                            coinId, 
-                                            coinName, 
-                                            coinIcon, 
-                                            coinType 
-                                        }
-                                        }}> 
-                                        
-                                            <img style={{ marginRight: '6px'}} src={coinIcon} alt={`${code}-icon`} height="20" widht="20"></img>{coinName}
-                                        </Link>
+                <div style={{overflowX: 'auto'}}>
+                    <table className="stock-list">
+                        <thead>
+                            <tr>
+                                <th className="sticky-col" style={{ backgroundColor: '#f1f2f5'}}>Coins</th>
+                                <th onClick={() => sortBy("last_traded_price")}>
+                                    <div className="head">
+                                        <i className={direction["last_traded_price"] ? (direction["last_traded_price"] === 'desc' ? 'fa fa-sort-desc' : 'fa fa-sort-asc') : ''  }></i>
+                                        Price
                                     </div>
-                                </td>
-                                <td>{last_traded_price}</td>
-                                <td>
-                                {Math.round((volume.volume || 0) * 100)/ 100}
-                                </td>
-                                <td>
-                                    <div className={`percentage ${percentage > 0 ? 'green' : 'red'}`}>
-                                        <i className={percentage > 0 ? "fa fa fa-long-arrow-up green" : "fa fa fa-long-arrow-down red"}></i>
-                                        {Math.abs(Math.round(percentage * 100) / 100)}
+                                </th>
+                                <th onClick={() => sortBy("volume")}>
+                                    <div className="head">
+                                        <i className={direction["volume"] ? (direction["volume"] === 'desc' ? 'fa fa-sort-desc' : 'fa fa-sort-asc') : ''  }></i>
+                                        Volume
                                     </div>
-                                </td>
-                                <td><span onClick={() => onFavClick(coinId)} className={fav ? "fa fa-star yellow" : "fa fa-star-o "}></span></td>
+                                </th>
+                                <th onClick={() => sortBy("percentage")}>
+                                <div className="head">
+                                        <i className={direction["percentage"] ? (direction["percentage"] === 'desc' ? 'fa fa-sort-desc' : 'fa fa-sort-asc') : ''  }></i>
+                                        24H %
+                                    </div>
+                                </th>
+                                <th></th>
                             </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
+                        </thead>
+                        <tbody>
+                            { tableData.length > 0 && tableData.map((item) => {
+                                const { coinId, coinName, volume, last_traded_price, percentage, fav, coinIcon, code, coinType} = item
+                                return (
+                                    <tr key={coinId}>
+                                        <td className="sticky-col">
+                                            <div className="coin-name">
+                                                <Link to={{ 
+                                                pathname: `/${code}`, 
+                                                detailData: { 
+                                                    coinId, 
+                                                    coinName, 
+                                                    coinIcon, 
+                                                    coinType 
+                                                }
+                                                }}> 
+                                                
+                                                    <img style={{ marginRight: '6px'}} src={coinIcon} alt={`${code}-icon`} height="20" widht="20"></img>{coinName}
+                                                </Link>
+                                            </div>
+                                        </td>
+                                        <td>{last_traded_price}</td>
+                                        <td>
+                                        {Math.round((volume.volume || 0) * 100)/ 100}
+                                        </td>
+                                        <td>
+                                            <div className={`percentage ${percentage > 0 ? 'green' : 'red'}`}>
+                                                <i className={percentage > 0 ? "fa fa fa-long-arrow-up green" : "fa fa fa-long-arrow-down red"}></i>
+                                                {Math.abs(Math.round(percentage * 100) / 100)}
+                                            </div>
+                                        </td>
+                                        <td><span onClick={() => onFavClick(coinId)} className={fav ? "fa fa-star yellow" : "fa fa-star-o "}></span></td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </PageLayout>
     )
