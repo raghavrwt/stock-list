@@ -25,7 +25,7 @@ const ListingPage = (props) => {
         ]).then(([stockLists, stockVolumes]) => {
             const filteredStocks = Object.keys(stockLists).map(list => {
                 if (Object.keys(stockVolumes).includes(list.toUpperCase())) {
-                    if (JSON.parse(localStorage.getItem("favs")).includes(list)) {
+                    if (localStorage.getItem("favs") && JSON.parse(localStorage.getItem("favs")).includes(list)) {
                         return { 
                             ...stockLists[list], 
                             ...stockVolumes[list.toUpperCase()], 
